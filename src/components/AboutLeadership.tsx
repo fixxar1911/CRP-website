@@ -1,94 +1,94 @@
-import { Award, ShieldCheck, UserCheck, MapPin } from 'lucide-react';
+import React from 'react';
+import { ShieldCheck, UserCheck, MapPin, ArrowRight } from 'lucide-react';
 
 interface AboutLeadershipProps {
   onOpenContactModal: () => void;
 }
 
-export const AboutLeadership = ({ onOpenContactModal }: AboutLeadershipProps) => {
+export const AboutLeadership: React.FC<AboutLeadershipProps> = ({ onOpenContactModal }) => {
   return (
-    <section id="about" className="py-24 bg-[#070b15] relative">
+    <section id="about" className="py-28 bg-[#070b15] relative border-t border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Founder Executive Headshot (5 Cols) */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl group">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Executive Headshot (5 Cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 shadow-2xl">
               <img
-                src="images/joseph_nitti.jpg"
+                src="images/joseph_nitti.jpg?v=20261008"
                 alt="Joseph Nitti, Founder and Managing Principal of Commercial Realty Partners"
-                className="w-full h-[520px] object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95"
+                className="w-full h-[520px] object-cover object-top filter brightness-95"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#090e1a] via-transparent to-transparent" />
-
-              {/* Founder Overlay Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-[#0e1626]/90 border border-amber-500/40 backdrop-blur-md">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center font-bold text-slate-950 text-lg font-serif-brand shrink-0 shadow-lg shadow-amber-500/20">
-                    JN
-                  </div>
+              <div className="p-5 border-t border-slate-800 bg-[#0a0f1d]">
+                <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="text-sm font-bold text-white font-serif-brand">Joseph Nitti</h4>
-                    <p className="text-xs text-amber-400 font-semibold">Founder & Managing Principal</p>
-                    <p className="text-[11px] text-slate-400 mt-0.5">Commercial Realty Partners, LLC</p>
+                    <h3 className="text-lg font-bold text-white font-serif-brand">Joseph Nitti</h3>
+                    <p className="text-xs text-amber-400 font-medium">Founder & Managing Principal</p>
                   </div>
+                  <span className="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                    crpnj.com
+                  </span>
                 </div>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  25+ years directing New Jersey industrial brokerage, institutional site sourcing, and build-to-suit logistics parks.
+                </p>
               </div>
             </div>
-
-            {/* Glowing Accent Ring */}
-            <div className="absolute -bottom-6 -right-6 w-36 h-36 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
           </div>
 
-          {/* Right Column: Firm Story & Track Record (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
-              <Award className="w-4 h-4" /> About Commercial Realty Partners
+          {/* Right Column: Narrative & Firm Credentials (7 Cols) */}
+          <div className="lg:col-span-7 space-y-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400/90 mb-3">
+                Firm Leadership & Heritage
+              </p>
+              <h2 className="text-3xl sm:text-5xl font-bold text-white font-serif-brand leading-tight">
+                Decades of Direct Industrial Expertise in <span className="text-gradient-gold">New Jersey</span>
+              </h2>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-bold text-white font-serif-brand leading-tight">
-              Deep Regional Insight. <br />
-              <span className="text-gradient-gold">Unmatched Execution.</span>
-            </h2>
-
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Founded in 2016 by Joseph Nitti, Commercial Realty Partners, LLC (crpnj.com) is an Edison, New Jersey-based commercial real estate brokerage and industrial property development firm.
+            <p className="text-slate-300 text-base leading-relaxed">
+              Founded in 2016 by Joseph Nitti, Commercial Realty Partners, LLC is an Edison-based commercial real estate brokerage and industrial property development firm specializing exclusively in high-bay logistics warehouses, port drayage terminals, and strategic land acquisitions across the NJ/NY region.
             </p>
 
             <p className="text-slate-400 text-sm leading-relaxed">
-              We specialize in industrial warehouse leasing, strategic land acquisition, truck terminals, and build-to-suit logistics parks. Our client roster includes global third-party logistics (3PL) providers, national institutional developers, corporate occupiers, and private investors throughout the NJ/NY region.
+              Prior to establishing CRP, Joseph Nitti served as President of the Industrial Division at Colliers International. A veteran of the United States Marine Corps (retired Major) and graduate of Massachusetts Maritime Academy (B.S. in Mechanical Engineering), Nitti brings institutional discipline and rigorous market insight to every client mandate.
             </p>
 
-            {/* Strategic Pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800">
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="flex items-center gap-2 text-amber-400 font-bold text-sm mb-1 font-serif-brand">
-                  <ShieldCheck className="w-4 h-4" /> Speed to Market
+            {/* Strategic Value Pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4 border-t border-slate-800">
+              <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div className="flex items-center gap-2.5 text-amber-400 font-bold text-sm mb-2 font-serif-brand">
+                  <ShieldCheck className="w-4 h-4 shrink-0" />
+                  <span>Institutional Speed to Market</span>
                 </div>
-                <p className="text-xs text-slate-400 leading-normal">
-                  Rapid site sourcing, off-market deal access, and streamlined municipal entitlement processes.
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Deep off-market network, proprietary land pipelines, and accelerated municipal entitlement navigation across Middlesex, Essex, and Hudson counties.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="flex items-center gap-2 text-amber-400 font-bold text-sm mb-1 font-serif-brand">
-                  <UserCheck className="w-4 h-4" /> Direct Broker Access
+              <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div className="flex items-center gap-2.5 text-amber-400 font-bold text-sm mb-2 font-serif-brand">
+                  <UserCheck className="w-4 h-4 shrink-0" />
+                  <span>Direct Principal Access</span>
                 </div>
-                <p className="text-xs text-slate-400 leading-normal">
-                  Work directly with senior principal brokers who own local market relationships and deal velocity.
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Every assignment is directed personally by senior principals, ensuring institutional quality, absolute discretion, and rapid deal closure.
                 </p>
               </div>
             </div>
 
-            {/* HQ Office Quick Details */}
-            <div className="p-4 rounded-xl bg-slate-900/60 border border-amber-500/20 flex flex-wrap items-center justify-between gap-4 text-xs">
-              <div className="flex items-center gap-2 text-slate-300">
-                <MapPin className="w-4 h-4 text-amber-400" />
-                <span>Headquarters: Edison, New Jersey 08837</span>
+            {/* Direct Contact Bar */}
+            <div className="p-5 rounded-xl bg-slate-900/40 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5 text-xs text-slate-300">
+                <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Headquarters: 55 Carter Drive, Suite 200, Edison, NJ 08817</span>
               </div>
               <button
                 onClick={onOpenContactModal}
-                className="px-4 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold hover:brightness-110 transition-all"
+                className="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors flex items-center gap-2 shrink-0"
               >
-                Contact Firm Principal
+                <span>Direct Broker Inquiry</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
