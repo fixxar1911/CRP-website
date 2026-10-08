@@ -1,29 +1,28 @@
-import React from 'react';
 import { Award, ShieldCheck, UserCheck, MapPin } from 'lucide-react';
 
 interface AboutLeadershipProps {
   onOpenContactModal: () => void;
 }
 
-export const AboutLeadership: React.FC<AboutLeadershipProps> = ({ onOpenContactModal }) => {
+export const AboutLeadership = ({ onOpenContactModal }: AboutLeadershipProps) => {
   return (
     <section id="about" className="py-24 bg-[#070b15] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Corporate Office Showcase Image (5 Cols) */}
+          {/* Left Column: Founder Executive Headshot (5 Cols) */}
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl group">
               <img
-                src="images/office_commercial.jpg"
-                alt="Commercial Realty Partners Edison NJ Headquarters"
-                className="w-full h-[480px] object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-95"
+                src="images/joseph_nitti.jpg"
+                alt="Joseph Nitti, Founder and Managing Principal of Commercial Realty Partners"
+                className="w-full h-[520px] object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#090e1a] via-transparent to-transparent" />
 
               {/* Founder Overlay Badge */}
               <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-[#0e1626]/90 border border-amber-500/40 backdrop-blur-md">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center font-bold text-slate-950 text-lg font-serif-brand shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center font-bold text-slate-950 text-lg font-serif-brand shrink-0 shadow-lg shadow-amber-500/20">
                     JN
                   </div>
                   <div>
@@ -65,7 +64,7 @@ export const AboutLeadership: React.FC<AboutLeadershipProps> = ({ onOpenContactM
                   <ShieldCheck className="w-4 h-4" /> Speed to Market
                 </div>
                 <p className="text-xs text-slate-400 leading-normal">
-                  Rapid site sourcing, off-market deal access, and stream-lined municipal entitlement processes.
+                  Rapid site sourcing, off-market deal access, and streamlined municipal entitlement processes.
                 </p>
               </div>
 
