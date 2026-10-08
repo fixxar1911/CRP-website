@@ -30,8 +30,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#090e1a]/95 backdrop-blur-md border-b border-slate-800/90 py-3.5 shadow-xl'
-          : 'bg-gradient-to-b from-[#090e1a]/95 to-transparent py-5'
+          ? 'bg-[#090e1a]/98 backdrop-blur-md border-b border-slate-800 py-3.5 shadow-xl'
+          : 'bg-[#090e1a]/90 backdrop-blur-md border-b border-slate-800/60 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,14 +45,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
               <span className="font-serif-brand text-base sm:text-lg font-bold tracking-wider text-white leading-none">
                 COMMERCIAL REALTY
               </span>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="text-[10px] font-semibold tracking-widest text-amber-500 uppercase leading-none">
-                  PARTNERS, LLC
-                </span>
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono">
-                  crpnj.com
-                </span>
-              </div>
+              <span className="text-[10px] font-semibold tracking-widest text-white uppercase leading-none mt-1">
+                PARTNERS, LLC
+              </span>
             </div>
           </a>
 
