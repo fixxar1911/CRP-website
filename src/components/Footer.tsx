@@ -17,10 +17,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContactModal }) => {
                 <Building2 className="w-5 h-5 text-amber-400" />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif-brand text-base font-bold tracking-wider text-white">
+                <span className="font-serif-brand text-base font-bold tracking-wider text-white leading-none">
                   COMMERCIAL REALTY
                 </span>
-                <span className="text-[10px] font-semibold tracking-widest text-amber-500 uppercase">
+                <span className="text-[10px] font-semibold tracking-widest text-white uppercase leading-none mt-1">
                   PARTNERS, LLC
                 </span>
               </div>
@@ -29,12 +29,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContactModal }) => {
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               New Jersey’s premier commercial real estate brokerage and industrial property development firm, specializing in logistics warehouse leasing and land development.
             </p>
-
-            <div className="flex items-center gap-2 pt-1">
-              <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-amber-300">
-                crpnj.com
-              </span>
-            </div>
           </div>
 
           {/* Col 2: Navigation */}
