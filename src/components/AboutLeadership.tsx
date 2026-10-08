@@ -14,7 +14,7 @@ export const AboutLeadership: React.FC<AboutLeadershipProps> = ({ onOpenContactM
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl group">
               <img
-                src="/images/office_commercial.jpg"
+                src="images/office_commercial.jpg"
                 alt="Commercial Realty Partners Edison NJ Headquarters"
                 className="w-full h-[480px] object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-95"
               />

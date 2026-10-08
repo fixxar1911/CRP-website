@@ -24,7 +24,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch }) => {
       {/* Background Hero Image with Layered Gradients */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero_industrial_park.jpg"
+          src="images/hero_industrial_park.jpg"
           alt="Commercial Realty Partners NJ Logistics Park"
           className="w-full h-full object-cover object-center transform scale-105 filter brightness-90 animate-pulse-glow"
         />

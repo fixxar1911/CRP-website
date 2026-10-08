@@ -32,7 +32,7 @@ export const PROPERTIES_DATA: Property[] = [
     driveInDoors: 4,
     power: '4,000 Amps, 480V, 3-Phase',
     parking: '180 Trailer Stalls / 240 Auto Stalls',
-    image: '/images/hero_industrial_park.jpg',
+    image: 'images/hero_industrial_park.jpg',
     status: 'Available Now',
     featured: true,
     highlights: [
@@ -56,7 +56,7 @@ export const PROPERTIES_DATA: Property[] = [
     driveInDoors: 6,
     power: '2,000 Amps, 480V',
     parking: '220 Heavy Truck / Trailer Spots',
-    image: '/images/warehouse_interior.jpg',
+    image: 'images/warehouse_interior.jpg',
     status: 'Available Now',
     featured: true,
     highlights: [
@@ -80,7 +80,7 @@ export const PROPERTIES_DATA: Property[] = [
     driveInDoors: 8,
     power: '6,000 Amps, 480V, 3-Phase',
     parking: '290 Trailer Stalls / 410 Auto Stalls',
-    image: '/images/hero_industrial_park.jpg',
+    image: 'images/hero_industrial_park.jpg',
     status: 'Under Development',
     featured: true,
     highlights: [
@@ -104,7 +104,7 @@ export const PROPERTIES_DATA: Property[] = [
     driveInDoors: 2,
     power: '2,500 Amps, 480V',
     parking: '95 Trailer / 160 Auto',
-    image: '/images/office_commercial.jpg',
+    image: 'images/office_commercial.jpg',
     status: 'Available Now',
     featured: false,
     highlights: [
@@ -128,7 +128,7 @@ export const PROPERTIES_DATA: Property[] = [
     driveInDoors: 6,
     power: 'Heavy Utility Power Available',
     parking: 'Expandable Yard & Parking',
-    image: '/images/industrial_land.jpg',
+    image: 'images/industrial_land.jpg',
     status: 'Build-to-Suit',
     featured: true,
     highlights: [
@@ -152,7 +152,7 @@ export const PROPERTIES_DATA: Property[] = [
     driveInDoors: 4,
     power: '5,000 Amps Heavy Power',
     parking: '120 Auto / 40 Trailer',
-    image: '/images/warehouse_interior.jpg',
+    image: 'images/warehouse_interior.jpg',
     status: 'Available Now',
     featured: false,
     highlights: [

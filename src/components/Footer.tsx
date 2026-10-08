@@ -1,12 +1,10 @@
-import React from 'react';
-import { Building2, Phone, Mail, MapPin, CloudLightning } from 'lucide-react';
+import { Building2, Phone, Mail, MapPin } from 'lucide-react';
 
 interface FooterProps {
-  onOpenAmplifyModal: () => void;
   onOpenContactModal: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenAmplifyModal, onOpenContactModal }) => {
+export const Footer = ({ onOpenContactModal }: FooterProps) => {
   return (
     <footer className="bg-[#050811] text-slate-400 border-t border-slate-800/80 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,13 +35,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAmplifyModal, onOpenContac
               <span className="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300">
                 Official Domain: crpnj.com
               </span>
-              <button
-                onClick={onOpenAmplifyModal}
-                className="flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-amber-400 border border-slate-700"
-              >
-                <CloudLightning className="w-3 h-3 text-amber-400" />
-                <span>AWS Amplify</span>
-              </button>
             </div>
           </div>
 
@@ -110,8 +101,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAmplifyModal, onOpenContac
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} Commercial Realty Partners, LLC. All rights reserved. Registered domain crpnj.com.</p>
           <div className="flex items-center gap-4">
-            <button onClick={onOpenAmplifyModal} className="hover:text-slate-300">AWS Amplify Deployment Config</button>
-            <span>•</span>
             <a href="#about" className="hover:text-slate-300">Privacy & Terms</a>
           </div>
         </div>

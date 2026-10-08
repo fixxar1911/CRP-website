@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Building2, Phone, Menu, X, ArrowUpRight, CloudLightning } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Building2, Phone, Menu, X, ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
-  onOpenAmplifyModal: () => void;
   onOpenContactModal: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenAmplifyModal, onOpenContactModal }) => {
+export const Navbar = ({ onOpenContactModal }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -74,16 +73,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAmplifyModal, onOpenContac
 
           {/* Actions & CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Amplify Deploy Readiness Badge */}
-            <button
-              onClick={onOpenAmplifyModal}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 text-xs font-semibold transition-all shadow-sm"
-              title="AWS Amplify Deployment Configuration"
-            >
-              <CloudLightning className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-              <span>AWS Amplify Ready</span>
-            </button>
-
             <a
               href="tel:7328000000"
               className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 text-xs font-semibold transition-all border border-slate-700/60"
@@ -103,12 +92,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAmplifyModal, onOpenContac
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={onOpenAmplifyModal}
-              className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium"
-            >
-              <CloudLightning className="w-4 h-4" />
-            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg bg-slate-800 text-slate-200 hover:text-amber-400 focus:outline-none"

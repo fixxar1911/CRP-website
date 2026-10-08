@@ -8,12 +8,10 @@ import { ServicesSection } from './components/ServicesSection';
 import { AboutLeadership } from './components/AboutLeadership';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { AmplifyBadgeModal } from './components/AmplifyBadge';
 import type { Property } from './data/properties';
 
 export function App() {
   const [selectedPropertyForTour, setSelectedPropertyForTour] = useState<Property | null>(null);
-  const [isAmplifyModalOpen, setIsAmplifyModalOpen] = useState<boolean>(false);
 
   // Search parameters passed from Hero to Property Catalog
   const [catalogCategory, setCatalogCategory] = useState<string>('All');
@@ -42,18 +40,17 @@ export function App() {
     }
   };
 
+  const scrollToContact = () => {
+    const contactElem = document.getElementById('contact');
+    if (contactElem) {
+      contactElem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#090e1a] text-slate-100 font-sans selection:bg-amber-500/30 selection:text-amber-200">
       {/* Top Navbar */}
-      <Navbar
-        onOpenAmplifyModal={() => setIsAmplifyModalOpen(true)}
-        onOpenContactModal={() => {
-          const contactElem = document.getElementById('contact');
-          if (contactElem) {
-            contactElem.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
-      />
+      <Navbar onOpenContactModal={scrollToContact} />
 
       {/* Hero Section */}
       <Hero onSearch={handleHeroSearch} />
@@ -73,24 +70,10 @@ export function App() {
       <SubmarketsGuide onSelectSubmarketFilter={handleSelectSubmarketFilter} />
 
       {/* Core Brokerage Services */}
-      <ServicesSection
-        onOpenContactModal={() => {
-          const contactElem = document.getElementById('contact');
-          if (contactElem) {
-            contactElem.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
-      />
+      <ServicesSection onOpenContactModal={scrollToContact} />
 
       {/* About Firm Leadership (Joseph Nitti / Edison HQ) */}
-      <AboutLeadership
-        onOpenContactModal={() => {
-          const contactElem = document.getElementById('contact');
-          if (contactElem) {
-            contactElem.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
-      />
+      <AboutLeadership onOpenContactModal={scrollToContact} />
 
       {/* Contact & Schedule Tour Section */}
       <ContactSection
@@ -99,21 +82,7 @@ export function App() {
       />
 
       {/* Footer */}
-      <Footer
-        onOpenAmplifyModal={() => setIsAmplifyModalOpen(true)}
-        onOpenContactModal={() => {
-          const contactElem = document.getElementById('contact');
-          if (contactElem) {
-            contactElem.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
-      />
-
-      {/* AWS Amplify Modal Guide */}
-      <AmplifyBadgeModal
-        isOpen={isAmplifyModalOpen}
-        onClose={() => setIsAmplifyModalOpen(false)}
-      />
+      <Footer onOpenContactModal={scrollToContact} />
     </div>
   );
 }
