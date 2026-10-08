@@ -95,8 +95,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
                 <div>
                   <h4 className="text-[10px] font-bold uppercase text-slate-500 tracking-wider">Direct Correspondence</h4>
-                  <p className="text-xs font-semibold text-white mt-0.5">info@crpnj.com</p>
-                  <p className="text-xs text-slate-400 font-mono">Official Domain: crpnj.com</p>
+                  <a href="mailto:info@crpnj.com" className="text-xs font-semibold text-white hover:text-amber-400 transition-colors mt-0.5 block">
+                    info@crpnj.com
+                  </a>
                 </div>
               </div>
             </div>

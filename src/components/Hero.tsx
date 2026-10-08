@@ -22,7 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch }) => {
   };
 
   return (
-    <section className="relative min-h-[680px] lg:h-[90vh] lg:max-h-[860px] pt-28 pb-16 flex items-center justify-center overflow-hidden bg-[#090e1a]">
+    <section className="relative min-h-[720px] pt-36 sm:pt-44 pb-20 flex flex-col justify-center items-center overflow-hidden bg-[#090e1a]">
       {/* Background Architectural Image with Subtle Gradient */}
       <div className="absolute inset-0 z-0">
         <img
