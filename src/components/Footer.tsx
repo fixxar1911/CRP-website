@@ -3,9 +3,10 @@ import { Building2, Phone, Mail, MapPin } from 'lucide-react';
 
 interface FooterProps {
   onOpenContactModal: () => void;
+  onOpenLegalModal?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenContactModal }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenContactModal, onOpenLegalModal }) => {
   return (
     <footer className="bg-[#050811] text-slate-400 border-t border-slate-800/80 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,7 +95,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContactModal }) => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} Commercial Realty Partners, LLC. All rights reserved. Registered domain crpnj.com.</p>
           <div className="flex items-center gap-4">
-            <a href="#about" className="hover:text-slate-300 transition-colors">Privacy & Terms</a>
+            <button
+              onClick={onOpenLegalModal}
+              className="hover:text-amber-400 text-slate-400 transition-colors cursor-pointer"
+            >
+              Brokerage Disclosures & Privacy Policy
+            </button>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Building2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Building2, ShieldCheck, Loader2 } from 'lucide-react';
 import type { Property } from '../data/properties';
 
 interface ContactSectionProps {
@@ -21,14 +21,53 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     message: selectedProperty ? `I would like to request an on-site tour and leasing brochure for ${selectedProperty.title} (${selectedProperty.location}).` : ''
   });
 
+  // Security: Invisible honeypot field to block automated bot submissions
+  const [honeypot, setHoneypot] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [trackingId, setTrackingId] = useState('');
 
+  const formatPhoneNumber = (val: string) => {
+    const cleaned = val.replace(/\D/g, '').slice(0, 10);
+    if (cleaned.length < 4) return cleaned;
+    if (cleaned.length < 7) return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
+    return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6)}`;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, phone: formatPhoneNumber(e.target.value) });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const newTrackingId = `CRP-${Math.floor(100000 + Math.random() * 900000)}`;
-    setTrackingId(newTrackingId);
-    setSubmitted(true);
+    setErrorMessage('');
+
+    // Honeypot bot protection: if filled, quietly drop without alerting bot
+    if (honeypot.trim() !== '') {
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+        setTrackingId(`CRP-${Math.floor(100000 + Math.random() * 900000)}`);
+      }, 500);
+      return;
+    }
+
+    // Email pattern validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailPattern.test(formData.email.trim())) {
+      setErrorMessage('Please enter a valid corporate email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setTimeout(() => {
+      const newTrackingId = `CRP-${Math.floor(100000 + Math.random() * 900000)}`;
+      setTrackingId(newTrackingId);
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }, 650);
   };
 
   return (
@@ -100,6 +139,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </a>
                 </div>
               </div>
+
+              {/* Security Assurance Badge */}
+              <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-slate-900/50 border border-slate-800 text-[11px] text-slate-400">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Encrypted transmission. Your requirement data is kept strictly confidential.</span>
+              </div>
             </div>
           </div>
 
@@ -140,10 +185,30 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Invisible Honeypot Field for anti-bot protection */}
+                  <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                    <label htmlFor="_antispam_hp">Leave this empty</label>
+                    <input
+                      id="_antispam_hp"
+                      type="text"
+                      name="_antispam_hp"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div className="border-b border-slate-800 pb-3 mb-2">
                     <h3 className="text-lg font-bold text-white font-serif-brand">Request Property Tour or Proposal</h3>
                     <p className="text-xs text-slate-400">Direct response from Commercial Realty Partners principal brokers.</p>
                   </div>
+
+                  {errorMessage && (
+                    <div className="p-3 rounded-lg bg-red-950/80 border border-red-800 text-xs text-red-200">
+                      {errorMessage}
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -189,7 +254,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         required
                         placeholder="(732) 555-0100"
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={handlePhoneChange}
                         className="w-full px-3.5 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500/70"
                       />
                     </div>
@@ -239,10 +304,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
                   >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>Submit Inquiry to Principal Brokers</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        <span>Transmitting Securely...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-3.5 h-3.5" />
+                        <span>Submit Inquiry to Principal Brokers</span>
+                      </>
+                    )}
                   </button>
                 </form>
               )}

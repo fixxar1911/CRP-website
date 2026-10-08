@@ -8,10 +8,12 @@ import { ServicesSection } from './components/ServicesSection';
 import { AboutLeadership } from './components/AboutLeadership';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { LegalModal } from './components/LegalModal';
 import type { Property } from './data/properties';
 
 export function App() {
   const [selectedPropertyForTour, setSelectedPropertyForTour] = useState<Property | null>(null);
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState<boolean>(false);
 
   // Search parameters passed from Hero to Property Catalog
   const [catalogCategory, setCatalogCategory] = useState<string>('All');
@@ -82,7 +84,16 @@ export function App() {
       />
 
       {/* Footer */}
-      <Footer onOpenContactModal={scrollToContact} />
+      <Footer
+        onOpenContactModal={scrollToContact}
+        onOpenLegalModal={() => setIsLegalModalOpen(true)}
+      />
+
+      {/* Institutional Brokerage Disclosures & Privacy Modal */}
+      <LegalModal
+        isOpen={isLegalModalOpen}
+        onClose={() => setIsLegalModalOpen(false)}
+      />
     </div>
   );
 }
